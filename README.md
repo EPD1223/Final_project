@@ -10,6 +10,12 @@ Run: cd /Users/emmahdaanen/Downloads/FASTA_files
 To align files run: clustalw2 -INFILE=Helianthus_alignment.fasta -ALIGN -OUTFILE=aligned_sequences.aln
 
 #Distance Based Trees (in R):
+Assumptions: The distance between two sequences is the sum of the distances along the path 
+connecting them in the tree. Often assumes a constant rate of evolution over time, which may 
+not always hold true.
+Limitations: Converting sequence data into pairwise distances can result in the loss of 
+information about individual character changes. 
+
 Run: library(ape)
      library(phangorn)
 Run: setwd("/Users/emmahdaanen/Downloads/FASTA_files")
@@ -40,6 +46,11 @@ To apply name mapping run: nj_tree$tip.label <- name_map[nj_tree$tip.label]
                            write.tree(nj_tree, file="Helianthus_NJ_tree_named.nwk")
                            
 #Parsimony-based trees (in R):
+Assumptions: Assumes that the simplest explanation, requiring the fewest evolutionary 
+changes, is the most likely. Assumes that convergent evolution and parallel evolution.
+Limitations: Parsimony is not statistically consistent - meaning it may not always 
+produce the correct tree even with large amounts of data. 
+
 Run: library(ape)
      library(phangorn)
 Run: setwd("/Users/emmahdaanen/Downloads/FASTA_files")
