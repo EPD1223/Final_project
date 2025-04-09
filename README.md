@@ -78,3 +78,19 @@ Apply name mapping: parsimony_tree$tip.label <- name_map[parsimony_tree$tip.labe
                     plot(parsimony_tree, main="Parsimony-Based Tree (Renamed)", cex = 0.6)
                     write.tree(parsimony_tree, file="Helianthus_Parsimony_tree_named.nwk")
 
+#Run RAxML 
+Assumptions: RAxML assumed that the chosen model of nucleotide or amino acid substitution 
+accurately represents the evolutionary process. It assumes that the evolutionary process is
+homogeneous across the entire tree, meaning the same model parameters apply to all 
+branches. Additionally, sites in the alignment are assumed to evolve independently of each other.
+Limitations: RAxML can be computationally intensive, especially for large data sets. 
+It has specific ways of handling gaps and missing data, which may not always be ideal
+for all data sets. 
+
+Install RAxML
+To convert Helianthus_aligned.aln file to PHYLIP format (in terminal) run:
+  pip install segmagick
+  seqmagick convert Helianthus_aligned.aln Helianthus_aligned.phy 
+Use the following command to execute RAxML: 
+  raxmlHPC -s Helianthus_aligned.phy -n Helianthus_ML_tree -m GTRGAMMA -p 12345 -# 100
+You can visualize the resulting trees using software like FigTree or Dendroscope. 
