@@ -14,11 +14,11 @@ To align files run:
   clustalw2 -INFILE=Helianthus_alignment.fasta -ALIGN -OUTFILE=aligned_sequences.aln. 
 
 #Distance Based Trees (in R):
-Assumptions: The distance between two sequences is the sum of the distances along the path 
-connecting them in the tree. Often assumes a constant rate of evolution over time, which may 
-not always hold true.
-Limitations: Converting sequence data into pairwise distances can result in the loss of 
-information about individual character changes. 
+Assumptions:
+  1. The distance between two sequences is the sum of the distances along the path connecting them in the tree.
+  2. Often assumes a constant rate of evolution over time, which may not always hold true.
+Limitations:
+  1. Converting sequence data into pairwise distances can result in the loss of information about individual character changes. 
 
 Run: 
   library(ape)
@@ -54,10 +54,11 @@ To apply name mapping run:
   write.tree(nj_tree, file="Helianthus_NJ_tree_named.nwk")
                            
 #Parsimony-based trees (in R):
-Assumptions: Assumes that the simplest explanation, requiring the fewest evolutionary 
-changes, is the most likely. Assumes that convergent evolution and parallel evolution.
-Limitations: Parsimony is not statistically consistent - meaning it may not always 
-produce the correct tree even with large amounts of data. 
+Assumptions:
+  1. Assumes that the simplest explanation, requiring the fewest evolutionary changes, is the most likely.
+  2. Assumes that convergent evolution and parallel evolution.
+Limitations:
+  1. Parsimony is not statistically consistent - meaning it may not always produce the correct tree even with large amounts of data. 
 
 Run: 
   library(ape)
@@ -91,13 +92,13 @@ Apply name mapping by running:
   write.tree(parsimony_tree, file="Helianthus_Parsimony_tree_named.nwk")
 
 #Run RAxML 
-Assumptions: RAxML assumed that the chosen model of nucleotide or amino acid substitution 
-accurately represents the evolutionary process. It assumes that the evolutionary process is
-homogeneous across the entire tree, meaning the same model parameters apply to all 
-branches. Additionally, sites in the alignment are assumed to evolve independently of each other.
-Limitations: RAxML can be computationally intensive, especially for large data sets. 
-It has specific ways of handling gaps and missing data, which may not always be ideal
-for all data sets. 
+Assumptions:
+  1. RAxML assumed that the chosen model of nucleotide or amino acid substitution accurately represents the evolutionary process. 
+  2. It assumes that the evolutionary process is homogeneous across the entire tree, meaning the same model parameters apply to all branches. 
+  3. Sites in the alignment are assumed to evolve independently of each other.
+Limitations:
+  1. RAxML can be computationally intensive, especially for large data sets.
+  2. It has specific ways of handling gaps and missing data, which may not always be ideal for all data sets. 
 
 Install RAxML
 To convert Helianthus_aligned.aln file to PHYLIP format (in terminal) run:
@@ -108,13 +109,15 @@ Use the following command to execute RAxML:
 You can visualize the resulting trees using software like FigTree or Dendroscope. 
 
 #Run MrBayes
-Assumptions: MrBayes assumes the model provided accurately reflects how your sequences
-evolved. Assumes the posterior probaility distribution reflects the credibility of trees
-given your data and model. Assumes the evolutionary process is homogenous aross the tree. 
-Limitations: Bayesian methods are computationally intensive - especially for large datasets.
-Priors can influence results if the data is weak or limited. Chains main fail to 
-converge or get stuck in local optima. MrBayes infers relative branch lengths, not
-divergence times.
+Assumptions:
+  1. MrBayes assumes the model provided accurately reflects how your sequences evolved.
+  2. Assumes the posterior probaility distribution reflects the credibility of trees given your data and model.
+  3. Assumes the evolutionary process is homogenous aross the tree. 
+Limitations:
+  1. Bayesian methods are computationally intensive - especially for large data sets.
+  2. Priors can influence results if the data is weak or limited. 
+  3. Chains main fail to converge or get stuck in local optima.
+  4. MrBayes infers relative branch lengths, not divergence times.
 
 Install MrBayes
 Convert Helianthus_aligned.aln file into NEXUS file, use the online tool, Phylogeny.fr,
