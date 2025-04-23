@@ -137,4 +137,20 @@ Load NEXUS file by running:
 Once loaded, MrBayes will start the analysis automatically because of the "begin mrbayes;" block.
 Let it run until it completes all generations. 
 
+# Run ASTRAL (with given test data)
+Assumptions:
+  1. Assumes that the input gene tree are reasonable accurate. Errors in gene tree estimation can affect the accuracy of the species tree. 
+  2. Assumes that gene trees are not affected by horizontal gene transfer, which can complicate phylogeny analysis. 
+  3. Works with binary trees, assuming that each node splits into exactly two branches. 
+Limitations: 
+  1. Can be computationally intensive, especially with large data sets - run time can be significant. 
+  2. Errors in gene tree estimation can propagate to the species tree, affecting its accuracy.
+  3. ASTRAL may struggles with very large data sets, requiring substantial computational resources. 
+  
+Install the latest version of ASTRAL. You can find it on the GitHub: https://github.com/smirarab/ASTRAL
+Open terminal and navigate to ASTRAL directory. 
+Run ASTRAL using the following command:
+   java -jar astral.5.7.8.jar -i path/to/simulated_primates_5X.10.gene.tre -o path/to/output_species_tree.tre
+   ```
+
 
